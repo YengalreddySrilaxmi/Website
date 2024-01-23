@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login and Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 800px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+
+    .login-form {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      width: 100%;
+      padding: 5px;
+      font-size: 16px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group select {
+      width: 100%;
+      padding: 5px;
+      font-size: 16px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 3px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #45a049;
+    }
+
+    .form-group a {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: #007BFF;
+    }
+
+    .form-group a:hover {
+      text-decoration: underline;
+    }
+
+    .image-container {
+      flex: 1;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image-container">
+      <img src="data:image/png;base64,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" alt="Login Image">
+    </div>
+    <div class="login-form">
+      <h2>Student Login</h2>
+      <form method="post" action="/dashboard">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+          <label for="role">Role:</label>
+          <select id="role" name="role" required>
+            <option>admin</option>
+            <option>student</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit">Login</button>
+        </div>
+        </form>
+        <form method = "get" action="/register">
+        <div class="form-group">
+          <button type="submit">Sign Up</button>
+        </div>
+        </form>
+        <form method = "get" action = "/forgot">
+        <div class="form-group">
+          <a href="submit">Forgot Password?</a>
+        </div>
+        </form>
+    </div>
+  </div>
+</body>
+</html>

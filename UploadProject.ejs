@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Form Example</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f1f1f1;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .box {
+      width: 400px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    
+    form {
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    label span {
+      flex-shrink: 0;
+      width: 120px;
+      padding-right: 10px;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="url"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Student Project Details</h1>  
+      <form action="/projectSubmit" method="POST">
+        <input type = "text" name = "email1" value = <%= data.email %> hidden readonly>
+        <input type = "password" name = "pwd" value = <%= data.pwd %> hidden readonly>
+        <input type = "text" name = "role" value = <%= data.role %> hidden readonly><br>
+        <label for="name">
+          <span>Name:</span>
+          <input type="text" id="name" name="name" required>
+        </label><br>
+
+        <label for = "email">
+            <span>Email:</span>
+            <input type = "email" name = "email" required>
+        </label><br>
+
+        <label for="rollno">
+          <span>Roll Number:</span>
+          <input type="text" id="rollno" name="rollno" required>
+        </label><br>
+
+
+        <label for="dept">
+          <span>Department:</span>
+          <select name = "dept" required>
+            <option>CSE</option>
+            <option>AIML</option>
+            <option>IT</option>
+            <option>ECE</option>
+            <option>EEE</option>
+          </select>
+        </label><br>
+
+        <label for="year">
+          <span>Year of Graduation:</span>
+          <select id="year" name="year" required>
+            <option selected disabled>Select a year</option>
+            <option>2022</option>
+            <option>2023</option>
+            <option>2024</option>
+            <option>2025</option>
+            <option>2026</option>
+            <option>2027</option>
+            <option>2028</option>
+          </select>
+        </label><br>
+        
+        <label for="technology">
+          <span>Technology:</span>
+          <select id="technology" name="technology" required>
+            <option selected disabled>Select a technology</option>
+            <option>Java</option>
+            <option>Python</option>
+            <option>JavaScript</option>
+            <option>C++</option>
+            <option>C#</option>
+            <!-- Add more programming languages as options -->
+          </select>
+        </label><br>
+
+        <label for="projectTitle">
+          <span>Project Title:</span>
+          <input type="text" id="projectTitle" name="projectTitle" required>
+        </label><br>
+
+        <label for="googleDriveLink">
+          <span>Github link:</span>
+          <input type="url" id="googleDriveLink" name="googleDriveLink" required>
+        </label>
+        <br>
+
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+</body>
+</html>

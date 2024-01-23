@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Details</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        .search-container {
+            margin-bottom: 20px;
+        }
+        
+        .department-container,
+        .year-container {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <form action = "/projects_update" method = "post">
+            <input type = "text" name = "email" value = <%= admin.email %> hidden readonly>
+            <input type = "password" name = "pwd" value = <%= admin.pwd %> hidden readonly>
+            <input type = "role" name = "role" value = <%= admin.role %> hidden readonly><br>
+            Department: 
+            <select name = "dept" required>
+                <option>Select</option>
+                <option>CSE</option>
+                <option>AIML</option>
+                <option>ECE</option>
+                <option>EEE</option>
+                <option>IT</option>
+            </select>&nbsp&nbsp Graduation Year:
+            <select name = "year" required>
+                <option>Select</option>
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+                <option>2025</option>
+                <option>2026</option>
+                <option>2027</option>
+                <option>2028</option>
+            </select>&nbsp&nbsp
+            <button type = "submit">Submit</button>
+        </form>
+    </div>
+    <div class="year-count" id="yearCount">Total Projects: <%= data.length %></div>
+    <% if (data.length > 0){ %>
+        <table>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>Department</th>
+            <th>Project Title</th>
+            <th>Technology</th>
+            <th>Email</th>
+            <th>GitHub Link</th>
+            <% data.forEach(function(field){ %>
+                <tr><td><%= field.name %></td>
+                <td><%= field.rollno %></td>
+                <td><%= field.dept %></td>
+                <td><%= field.title %></td>
+                <td><%= field.technology %></td>
+                <td><%= field.email %></td>
+                <td><%= field.gitlink %></td></tr>
+            <% }) %>
+        </table>
+    <% } else { %>
+        <h2>No current projects submitted yet</h2>
+    <% } %>
+    <form method = "post" action = "/dashboard">
+        <input type = "text" name = "email" value = <%= admin.email %> hidden readonly>
+        <input type = "password" name = "password" value = <%= admin.pwd %> hidden readonly>
+        <input type = "text" name = "role" value = <%= admin.role %> hidden readonly><br>
+        <button type = "submit">Click Here To Go Back</button>
+    </form>
+</body>
+</html>

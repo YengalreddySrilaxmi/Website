@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Profile</h1>
+        <h2>Email: <%= student.email %></h2>
+
+        <h3>My Projects:</h3>
+        <% if (data.length > 0){ %>
+            <table>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Department</th>
+                <th>Project Title</th>
+                <th>Technology</th>
+                <th>Email</th>
+                <th>GitHub Link</th>
+                <th>Edit</th>
+                <% data.forEach(function(field){ %>
+                    <form method = "post" action="/editproject">  
+                        <input type = "text" name = "email" value = <%= student.email %> hidden readonly>
+                        <input type = "password" name = "pwd" value = <%= student.pwd %> hidden readonly>
+                        <input type = "text" name = "role" value = <%= student.role %> hidden readonly><br> 
+                        <tr><td><%= field.name %></td>
+                        <td><%= field.rollno %> <input type = "text" name = "rollno" value = <%= field.rollno %> hidden readonly ></td>
+                        <td><%= field.dept %></td>
+                        <td><%= field.title %></td>
+                        <td><%= field.technology %></td>
+                        <td><%= field.email %></td>
+                        <td><%= field.gitlink %> <input type = "url" name = "gitlink" value = <%= field.gitlink %> hidden readonly ></td>
+                        <td><button type = "submit">Edit</button></td></tr>
+                    </form>
+                <% }) %>
+            </table>
+        <% } else { %>
+            <h2>No current projects submitted yet</h2>
+        <% } %>
+        <form method = "post" action = "/dashboard">
+            <input type = "text" name = "email" value = <%= student.email %> hidden readonly>
+            <input type = "password" name = "password" value = <%= student.pwd %> hidden readonly>
+            <input type = "text" name = "role" value = <%= student.role %> hidden readonly><br>
+            <button type = "submit">Click Here To Go Back</button>
+        </form>
+    </div>
+</body>
+</html>

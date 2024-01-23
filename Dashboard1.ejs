@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/xyz.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <style>
+    .dropdown {
+      display: none;
+    }
+
+    .more:hover .dropdown {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li>
+          <div class="logo">
+            <!-- Hi <%= data.email %>!<br> -->
+            <span class="nav-item">Dashboard</span>
+          </div>
+        </li>
+        <li>
+          <a href="https://docs.google.com/document/d/your_google_docs_link_here" target="_blank">
+            <form method="post" action="/events_students">
+              <input type="email" name="email" value=<%=data.email %> hidden readonly>
+              <input type="password" name="pwd" value=<%=data.pwd %> hidden readonly>
+              <input type="text" name="role" value=<%=data.role %> hidden readonly><br>
+              <button type="submit">
+                <i class="fas fa-calendar-alt"></i>
+                <span class="nav-item">Events</span></button>
+            </form>
+          </a>
+        </li>
+        <li>
+          <form method="post" action="/upload">
+            <input type="email" name="email" value=<%=data.email %> hidden readonly>
+            <input type="password" name="pwd" value=<%=data.pwd %> hidden readonly>
+            <input type="text" name="role" value=<%=data.role %> hidden readonly><br>
+            <button type="submit">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <span class="nav-item">Upload</span></button>
+          </form>
+        </li>
+        <li class="more">
+          <br>
+          <i class="fas fa-ellipsis-h"></i>
+          <span class="nav-item">More</span>
+          <ul class="dropdown">
+            <li>
+              <form method="post" action="/studentprofile">
+                <input type="email" name="email" value=<%=data.email %> hidden readonly>
+                <input type="password" name="pwd" value=<%=data.pwd %> hidden readonly>
+                <input type="text" name="role" value=<%=data.role %> hidden readonly><br>
+                <button type="submit">
+                  <i class="fas fa-user"></i>
+                  <span class="nav-item">My Profile</span></button>
+              </form>
+            </li>
+            <li>
+              <form method="post" action="/notification_student">
+                <input type="email" name="email" value=<%=data.email %> hidden readonly>
+                <input type="password" name="pwd" value=<%=data.pwd %> hidden readonly>
+                <input type="text" name="role" value=<%=data.role %> hidden readonly><br>
+                <button type="submit">
+                  <i class="fas fa-bell"></i>
+                  <span class="nav-item">Notification</span></button>
+              </form>
+            </li>
+            <li>
+              <form method="get" action="/"><br>
+                <button type="submit">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span class="nav-item">Logout</span></button>
+              </form>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</body>
+
+</html>

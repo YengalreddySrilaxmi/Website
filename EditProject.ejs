@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Project</h1>
+        <% data.forEach(function(field){ %>
+        <form method="post" action="/updateproject">
+            <input type = "text" name = "email" value = <%= student.email %> hidden readonly>
+            <input type = "password" name = "pwd" value = <%= student.pwd %> hidden readonly>
+            <input type = "text" name = "role" value = <%= student.role %> hidden readonly>
+            <input type="text" name="prollno" value = <%= field.rollno %> hidden readonly>
+            <input type="text" name="pgitlink" value = <%= field.gitlink %> hidden readonly>
+            <br>
+            <label>Name:</label>
+            <input type="text" name="name" value = <%= field.name %> >  
+            <label>Roll No:</label>
+            <input type="text" name="rollno" value = <%= field.rollno %> >
+            <label>Technology:</label>
+            <input type="text" name="technology" value = <%= field.technology %>>
+            <label>Project Title:</label>
+            <input type="text" name="title" value = <%= field.title %>>
+            <label>Google Drive Link:</label>
+            <input type="text" name="gitlink" value = <%= field.gitlink %>>
+            <input type="submit" value="Update">
+        </form>
+        <% }) %>
+    </div>
+    <form method = "post" action = "/dashboard">
+        <input type = "text" name = "email" value = <%= student.email %> hidden readonly>
+        <input type = "password" name = "password" value = <%= student.pwd %> hidden readonly>
+        <input type = "text" name = "role" value = <%= student.role %> hidden readonly><br>
+        <button type = "submit">Click Here To Go Back</button>
+    </form>
+</body>
+</html>
